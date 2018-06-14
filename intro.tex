@@ -1,0 +1,297 @@
+\section{1	Introduction}
+	\label{1intro}
+
+%==============================================================================
+%   DENSITY FUNCTIONAL THEORY
+%==============================================================================
+\subsection{Density Functional Theory}
+
+Density Functional Theory (DFT) is nowadays still widely used after almost 50 year due to its proper trade of computational cost. This is in principle competitive with respect to wave-function based methods, because of the reduction in degrees of freedom for describing a system: a N particle electron wave function would be described with 3N degrees of freedom:
+
+\begin{equation}
+\psi(\mathbf{x}_1,\mathbf{x}_2,...,\mathbf{x}_N) = M_k det 
+\left |
+\psi_A(\mathbf{x}_1) \psi_B(\mathbf{x}_2) \psi_X(\mathbf{x}_N)
+\right |
+\label{eq:psi_n}
+\end{equation}
+On the other hand, DFT is trying to simplify the system using the wave function electron density:
+subsection{Density Functional Theory}
+\begin{equation}
+\rho(\mathbf{r}) = M \int \ldots \int \psi(\mathbf{r}_1,\mathbf{r}_2,\ldots,\mathbf{r}_N) \psi(\mathbf{r}_1,\mathbf{r}_2,\ldots,\mathbf{r}_N) d\mathbf{r}_2 \ldots d\mathbf{r}_N
+\label{eq:rhoDFT}
+\end{equation}
+Where $M$ and $M_k$ in equations \ref{eq:psi_n} and \ref{eq:rhoDFT} are normalization factors. From the electron density, one can obtain some information, such as the particle number in the system:
+\begin{equation}
+N = \int d\mathbf{r}^3 \rho(\mathbf{r}) = N[\rho]
+\label{eq:Nparticles}
+\end{equation}
+But the revolution of the use of density functional has been revolutionized by the Hohenberg-Kohn Theorem, which states that the equation \ref{eq:rhoDFT} can be inverted, therefore, given a certain ground state density $\rho_0$ is it possible to obtain the wave function $\psi_0$. This means that $\psi_0$ is a functional of $\rho_0$, although the latter only has 3 degrees of freedom. This makes it possible in principle to compute the energy of a system fully as a functional of the ground state wave function density. However, fully density-based functional have failed to accurately describe, the energetic of a system, because of lacking in description of two functional: the kinetic energy for a many-body wave function, and the electron exchange-correlation.
+
+%==============================================================================
+%   KOHN-SHAM EQUATIONS
+%==============================================================================
+\subsubsection{Kohn-Sham equations}
+
+The energy minimization of single interacting particles moving in a potential $v_s$ could be rewritten as the energy functional derivative with respect to the density which must be equal to zero in order to be minimized:
+\subsection{Density Functional Theory}
+\begin{equation}
+\begin{split}
+\label{eq:Esingle}
+&\frac{\delta E_s[\mathbf{\rho}]}{\delta \rho(\mathbf{r})} = 0 \\
+&= \frac{\delta T_s[\rho]}{\delta \rho(\mathbf{r})}
++\frac{\delta V_s[\rho]}{\delta \rho(\mathbf{r})}
+= \frac{\delta T_s[\rho]}{\delta \rho(\mathbf{r})}
++v_s(\mathbf{r})\\
+\end{split}
+\end{equation}
+Where $T_s[\rho]$ is the kinetic non-interacting term, while $V_s[\rho]$ is the functional linked to the external potential. If we would like to electron-electron interactions, then two potentials need to be introduced other then the external potential functional that this time will be called $V_{ext}[\rho]$, and the minimization will bring to the following equation:
+\begin{equation}
+\begin{split}
+\label{eq:Einteract}
+&\frac{\delta E_s[\mathbf{\rho}]}{\delta \rho(\mathbf{r})} = 0 \\
+&= \frac{\delta T_s[\rho]}{\delta \rho(\mathbf{r})}
++\frac{\delta V_{ext}[\rho]}{\delta \rho(\mathbf{r})}
++\frac{\delta V_{H}[\rho]}{\delta \rho(\mathbf{r})}
++\frac{\delta V_{xc}[\rho]}{\delta \rho(\mathbf{r})}\\
+&= \frac{\delta T_s[\rho]}{\delta \rho(\mathbf{r})}
++v_{ext}(\mathbf{r})
++v_{H}(\mathbf{r})
++v_{xc}(\mathbf{r})\\
+\end{split}
+\end{equation}
+Where $V_{H}[\rho]$ is the Hartree functional and $V_{xc}[\rho]$ is the exchange-correlation functional. These two minimization problems expressed in equation \ref{eq:Esingle} and \ref{eq:Einteract} differ in a linear way, and both minimization would have the same solution $\rho(\mathbf{r})$ if:
+\begin{equation}
+v_s(\mathbf{r}) = v_{ext}(\mathbf{r})+v_{H}(\mathbf{r})+v_{xc}(\mathbf{r})
+\label{V_eq}
+\end{equation}
+Therefore, one could describe the interacting particle system of equation \ref{eq:Einteract} by solving the non-interacting many-body Schrodinger equation, in an external potential such as the one in equation \ref{V_eq}, often referred as the equivalent potential, the equation would become:
+\begin{equation}
+\left [
+- \frac{\nabla^2}{2}+ v_s(\mathbf{r})
+\right]
+\phi_i^{KS}
+=
+\varepsilon_i
+\phi_i^{KS}
+\label{eq:DFT_KS}
+\end{equation}
+Where $\phi_i^{KS}$ are the Kohn-Sham wave functions. This way, the kinetic energy term is simply computed as the second derivative of the wave functions, while $v_s$ need to be computed as a functional of $\rho$, which is dependent of the Kohn-Sham wave function solution (see eq.\ref{eq:rhoDFT}). The electron density can be expressed as the sum of every wave function contribution in the system:
+\begin{equation}
+\rho(\mathbf{r}) = \sum_\mathbf{i}
+\left| \phi_i \right|^2
+\label{eq:rhospin}
+\end{equation}
+Equation \ref{eq:rhospin} and \ref{eq:DFT_KS} are the key for the solution to the system via a self-consistent calculation.
+
+%==============================================================================
+%   LATTICE DESCRIPTION
+%==============================================================================
+\subsubsection{Lattice description}
+
+%==============================================================================
+%   PSEUDO-POTENTIAL
+%==============================================================================
+\subsubsection{Pseudo-potential}
+
+%==============================================================================
+%   HUBBARD CORRECTION TO THE DFT
+%==============================================================================
+\subsection{Hubbard correction to the DFT}
+The total energy of the \textbf{DFT+U} approach is defined as:
+\begin{equation}
+E_{DFT+U} = E_{DFT}+E_{U}
+\label{eq:E_dft+U}
+\end{equation}
+
+Where equation \ref{eq:E_dft+U} show a linear combination of the energy: the Hubbard corrective energy term is not going to affect the $E_{DFT}$ part in which the energy is going to be computed the usual way. The Hubbard correction can be expressed as follows:
+
+
+\begin{equation}
+E_{U} = \frac{1}{2}\sum_{I \sigma} 
+U^{I} Tr\left[
+\left(
+\mathbf{1}-\mathbf{n}^{I \sigma}
+\right)
+\mathbf{n}^{I \sigma}
+\right]
+\label{eq:E_U}
+\end{equation}
+
+Where $I$ is the atomic site index, $\sigma$ is the spin and $\mathbf{n}^{I \sigma} = n_{m_1 m_2}^{I \sigma}$ are matrices relied to the occupation of localized orbitals $\varphi_m^I(\mathbf{r}) = \varphi_m^I(\mathbf{r-R_I})$. Considering an insulating crystal, the occupation matrix can be generalized as:
+
+\begin{equation}
+n_{m_1 m_2}^{I \sigma} = 
+\sum_\mathbf{k}^\mathbf{N_k}
+\sum_\nu^{N_{occ}}
+\langle 
+    \psi^{\circ}_{\nu\mathbf{k}\sigma}
+    \left| 
+        \hat{P}^I_{m_1 m_2}
+    \right|
+    \psi^{\circ}_{\nu\mathbf{k}\sigma}
+\rangle
+\label{eq:Nm1m2}
+\end{equation}
+
+Where $\hat{P}^I_{m_1 m_2}$ is the projector operator on the manifold of localized atomic orbitals for each atom type:
+
+\begin{equation}
+\hat{P}^I_{m_1 m_2} = \ket{\phi^I_{m_2}}\bra{\phi^I_{m_1}}
+\label{eq:P_proj}
+\end{equation}
+
+It is worth noting that the occupation matrix's size can vary, namely 3x3 when the considered localized orbitals are of p type, such as in the manganese case. In equation \ref{eq:Nm1m2} $N_k$ is the number of \textbf{k} points in the first bruillon zone, $N_{occ}$ is the number of occupied states, while $\ket{\psi^{\circ}_{\nu\mathbf{k}\sigma}}$ are the ground state (denoted by the "$^\circ$" symbol) Kohn-Sham (KS) wave function which are orthogonal to each other. The latter are determined by solving the system in eqaution \ref{eq:DFT_KS}, except that this time the Hamiltonian reads differently:
+\begin{equation}
+\hat{H}^\circ_{\sigma} = \hat{H}^\circ_{DFT,\sigma} + \hat{V}^\circ_{Hub\sigma}
+\label{eq:H_DFT+U}
+\end{equation}
+Where $\hat{H}^\circ_{DFT,\sigma}$ is the Hamiltonian for the DFT calculation, and
+\begin{equation}
+\hat{V}^\circ_{Hub,\sigma} = \sum_{I m_1 m_2} U^I
+\left ( 
+\frac{\delta_{m_1 m_2}}{2}- n_{m_1 m_2}^{I \sigma}
+\right )
+\hat{P}^I_{m_1 m_2}
+\label{eq:V_Hub}
+\end{equation}
+
+Is the Hubbard corrector operator acting on the ground state wave function trough the occupation matrix defined in equation \ref{eq:Nm1m2}. 
+%==============================================================================
+%   HUBBARD CONSTRAINED DFT
+%==============================================================================
+\subsubsection{Constrained DFT}
+
+Here we present a method for computing the Hubbard parameter from linear response constrained DFT (LR cDFT). The latter present the energy minimization of the system with the constraint of the total number of electrons being fixed in the system, since this quantity is not given in the problem input. The constrained optimization is then expressed as follows:
+\begin{equation}
+E \left( \left\{ \lambda^I \right\} \right) = 
+\underset{\rho _{\sigma }}{\min} \left\{ \mbox{E}_{DFT}\left[ \rho _{\sigma } \right]+ \sum_{I}{\lambda ^{I}n^{I}} \right\}
+\label{eq:Emin.cDFT}
+\end{equation}
+Which can be also expressed as a Lagrangian dual problem:
+\begin{equation}
+\overline{E} \left( \left\{ n^I \right\} \right) = 
+E \left( \left\{ \lambda^I \right\} \right)
+-\sum_{I}{\lambda ^{I}n^{I}} 
+\label{eq:Emin.cDFT.dual}
+\end{equation}
+The Lagrange transformation of equation \ref{eq:Emin.cDFT} into equation \ref{eq:Emin.cDFT.dual} allow to explicitly express the energy derivative with respect to the number of electron of each atom I ($n_I$):
+\begin{equation}
+\frac{d \overline{E}}{d n^I}= -\lambda^I
+\label{eq:dEdlambda}
+\end{equation}
+\subsection{DFT+U+V}
+Hence the second derivative:
+\begin{equation}
+\frac{d^2 \overline{E}}{d (n^I)^2}
+= -\frac{d \lambda^I}{d n^I} = -(\chi^{-1})_{II}
+\label{eq:d2Edlambda2}
+\end{equation}
+Which represents the curvature needed to be canceled out, in order to get a linearity of the energy dependence with respect to $n^i$. This is represented by the response matrix $\chi$, defined as $\chi_{I J}= d n^I/d \lambda^J$. Because the aim of introducing the Hubbard correction is to correct the curvature due to electron electron interaction, this is obtained from the curvature of the energy total energy $E_{DFT}$ from equation subtracted to the energy curvature computed without taking into account electron-electron interactions ($\chi^0$), therefore :
+\begin{equation}
+U^I = ((\chi^0)^{-1} - \chi^{-1})_{II}
+\label{eq:hubbardparam}
+\end{equation}
+Whose parameter may vary from an atomic site I to the other.
+%==============================================================================
+%   DENSITY FUNCTIONAL THEORY + U + V
+%==============================================================================
+\subsection{DFT+U+V}
+The Hubbard parameter explained in section above only brings a correction for between electrons of a corresponding atomic site, which is accounting for what is often referred to 'on site' coulomb interactions. On the other hand, the implementation with V ($V_{I J}$ parameter) brings and additional term for inter-site interaction between electrons on two different atoms ($I$,$J$). The Hubbard correction
+\subsubsection{Self-Consistent Field calculation}
+%==============================================================================
+%  SCF DFT + U + V
+%==============================================================================
+
+\begin{equation}
+E_{Hub} = 
+\sum_{I m_1 m_2} \frac{U^I}{2}
+\left( 
+    \delta_{m_1 m_2} - n_{m_1 m_2}^{II}
+\right)
+n_{m_1 m_2}^{II}
+-
+\sum_{I J m_1 m_2}^{'} \frac{V^{I J}}{2}
+n_{m_1 m_2}^{I J} n_{m_1 m_2}^{J I}
+\label{eq:E_Hub_corr}
+\end{equation}
+Where the occupation matrices are now generalized as:
+\begin{equation}
+n_{m_1 m_2}^{I J} = 
+\sum_\mathbf{k}^\mathbf{N_k}
+\sum_\nu^{N_{occ}}
+\langle 
+    \psi^{\circ}_{\nu\mathbf{k}\sigma}
+    \left| 
+        \hat{P}^{I J}_{m_1 m_2}
+    \right|
+    \psi^{\circ}_{\nu\mathbf{k}\sigma}
+\rangle
+\label{eq:n^IJ_m1_m2}
+\end{equation}
+With $\hat{P}^{I J}_{m_1 m_2}  = \ket{\phi^I_{m_2}}\bra{\phi^J_{m_1}}$ which is the generalized projector of equation \ref{eq:P_proj}. Then the Kohn-Sham equations can be rewritten as:
+\begin{equation}
+\left [
+-\frac{1}{2}\nabla^2 + V_{KS} + V_{Hub}
+\right]
+\ket{\psi_i} 
+= \varepsilon \ket{\psi_i} 
+\label{eq:KSDFT+U+V}
+\end{equation}
+Where $\ket{\psi_i}$ are the KS wave function for each \textbf{k} point and electronic band index $\nu$ in the first Bruillon zone, spin $\sigma$ and atomic index $I$. Hence, the Hubbard potential operator:
+\begin{equation}
+V_{Hub} = 
+\sum_{I m_1 m_2}
+U^I
+\left( 
+\frac{\delta_{m_1 m_2}}{2} - n_{m_1 m_2}^{II}
+\right)
+\hat{P}^{I I}_{m_1 m_2}
+-
+\sum_{I J m_1 m_2}^{'} 
+V^{I J}
+n_{m_1 m_2}^{I J} 
+\hat{P}^{I J}_{m_1 m_2}
+\label{eq:V_hubb}
+\end{equation}
+%==============================================================================
+%  U + V parameters from DFPT 
+%==============================================================================
+
+\subsubsection{U and V parameters from Density Functional Perturbation Theory}
+
+\begin{equation}
+V^{I J} = ((\chi^0)^{-1} - \chi^{-1})_{I J}
+\label{eq:Vparam}
+\end{equation}
+
+\begin{equation}
+\chi_{I J} = \sum_m \frac{
+d n_{mm}^{I J}}{d \lambda_J}
+~~~~~~~~~~~~
+\chi_{I J}^\circ = \sum_m \frac{
+d n_{mm}^{\circ I I}}{d \lambda_J}
+\label{eq:chiIJ}
+\end{equation}
+
+\begin{equation}
+\left [
+\hat H^\circ
+_{\mathbf{k+q}}
+\right]
+% *
+\ket{\Delta_\mathbf{q}^J u_{i,\mathbf{k}}}
+=
+-\hat P _c^{\mathbf{k+q}}
+% *
+\left [
+\Delta_\mathbf{q}^J V_{KS}^{\mathbf{k+q}} 
++ \sum_m
+\ket{\phi^J_{m,\mathbf{k+q}}}
+\bra{\phi^J_{m,\mathbf{k}}}
+\right]
+% *
+\ket{u^\circ_{i,\mathbf{k}}}
+\label{eq:LRKSsol}
+\end{equation}
+

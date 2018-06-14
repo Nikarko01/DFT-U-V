@@ -1,0 +1,12 @@
+\section{Methods}
+
+\subsection{Energetic}
+For MnO2 alpha, gamma and R phase, the same convergence parameters of beta phase have been used: $E_{cut}wf = 80 [Ry]$ and $E_{cut}\rho = 800 [Ry]$, concerning smearing and the k-points, for beta phase (orthorombic lattice $a_1=$4.396 \AA,$a_2=$4.396 \AA,$a_3=$2.871 \AA) the convergence study showed that is would e fine a k-grid 8x8x12, and smearing 0.01 [eV]. Knowing that the vectors ($\mathbf{b}_1, \mathbf{b}_2,\mathbf{b}_3$) in k-space are defined by the lattice vectors ($\mathbf{a}_1, \mathbf{a}_2,\mathbf{a}_3$) as follows:
+\begin{equation}
+\mathbf{b}_i = 2 \pi \frac{\mathbf{a}_j \cross \mathbf{a}_k}{\mathbf{a}_i \cdot (\mathbf{a}_j \cross \mathbf{a}_k)} ~~~~~~~~~ \forall (i,j,k) \in (1,2,3)
+\label{eq:k-vect}
+\end{equation}
+Therefore, once the reciprocal vectors are known, the same k-spacing as the one found in beta structure, can be used trough the other phases. This has been done for alpha ($k=12\times 12\times 5$), gamma ($k=12\times 12\times 8$) and R ($k=4\times 12\times 8$) phases.
+
+
+

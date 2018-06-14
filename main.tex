@@ -1,0 +1,56 @@
+\documentclass[11pt]{article}
+
+% packages
+\usepackage[english]{babel} 
+\usepackage[utf8]{inputenc}	
+\usepackage[]{algorithm2e}  % For pseudo code writing
+\usepackage{fancyhdr} 	    % For heading at the top of each page
+\usepackage{listings} 	    % For c++ code highlights
+\usepackage{xcolor} 	    % For setting colors of c++
+\usepackage{hyperref}	    % For making hyperlinks
+\usepackage{amsmath,amsfonts,amssymb}	% For numbered equations and symbols
+\usepackage{siunitx}        % For units (Amstrong, ect...)
+\usepackage{gensymb}	    % For symbols like \degree
+\usepackage{physics}        % Bra Ket notation
+%ShareLaTex Packages
+\usepackage{tikz}                           % For Flowchart
+\usetikzlibrary{shapes.geometric, arrows}   % For Flowchart
+\usepackage{algpseudocode}                  % For Pseudocode
+\usepackage{booktabs}                       % For better tables
+% unknown packages
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{blindtext}
+\usepackage{enumitem}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{float}
+\usepackage[T1]{fontenc}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{color}
+\usepackage{setspace}
+\pagestyle{fancy}
+\restylefloat{table}
+\usepackage{ragged2e}
+\usepackage{subfig}
+
+
+% header
+\fancyhead{}
+\headwidth = \textwidth
+\headheight = 28 pt
+\lhead{\textsc{Theoretical Introduction Part} (\today)}
+\rhead{Nicola Barchi}
+\chead{}
+
+%________________________________________________________________________________________________________%
+%__________________________________________document______________________________________________________%
+\begin{document}
+
+\input{intro}
+\input{methods}
+\input{questions_theory}
+%________________________________________________________________________________________________________%
+%__________________________________________Annexes______________________________________________________%\newpage
+
+\end{document}
